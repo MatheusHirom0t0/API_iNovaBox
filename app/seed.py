@@ -33,7 +33,7 @@ def seed(db: Session, num_users: int = 1000, posts_per_user: int = 1000):
                 likes=random.randint(0, 100)
             )
             db.add(post)
-        db.commit()  # Um commit por usuário
+        db.commit()
 
     print(f"✅ Dados inseridos com sucesso em {round(time.time() - start, 2)} segundos.")
 

@@ -22,3 +22,8 @@ def like(post_id: int, db: Session = Depends(get_db)):
 def feed(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
     """TODO"""
     return post_controller.feed(skip, limit, db)
+
+@router.get("/users/{user_id}/posts/", response_model=List[PostResponse])
+def get_user_posts(user_id: int, skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
+    """TODO"""
+    return post_controller.get_user_posts_controller(db, user_id, skip, limit)

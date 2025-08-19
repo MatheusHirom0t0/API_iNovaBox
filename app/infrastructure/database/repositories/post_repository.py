@@ -1,4 +1,5 @@
 """TODO"""
+from typing import List
 from sqlalchemy.orm import Session
 from app import schemas
 from app.infrastructure.database.models.post import Post
@@ -23,3 +24,14 @@ def like_post(db: Session, post_id: int):
 def get_feed(db: Session, skip: int = 0, limit: int = 10):
     """TODO"""
     return db.query(Post).order_by(Post.created_at.desc()).offset(skip).limit(limit).all()
+
+def get_post_by_user(db: Session, user_id: int, skip: int = 0, limit: int = 10) -> List[Post]:
+    """TODO"""
+    posts = (
+        db.query(Post)
+        .filter(Post.user_id == user_id)
+        .offset(skip)
+        .limit(limit)
+        .all()
+    )
+    return posts
