@@ -1,4 +1,4 @@
-"""TODO"""
+"""main"""
 from fastapi import FastAPI
 from app.infrastructure.database import Base, engine
 from app.api.v1.routers import user, post
